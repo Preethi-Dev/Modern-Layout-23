@@ -1,5 +1,241 @@
 /* Resets */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
 /* Fonts */
+@font-face {
+  font-family: "Georgia";
+  src: url(./assets/fonts/Georgia.ttf);
+}
+
+@font-face {
+  font-family: "TeX Gyre Adventor";
+  src: url(./assets/fonts//texgyreadventor-regular.otf);
+}
+
+@font-face {
+  font-family: "TeX Gyre Adventor Bold";
+  src: url(./assets/fonts/texgyreadventor-bold.otf);
+}
+
 /* Variables */
+:root {
+  --primary: #1c1c1c;
+  --secondary: #ffffff;
+  --bg: #da834b;
+}
+
 /* Base Styles */
+body {
+  background-color: var(--bg);
+  color: var(--primary);
+}
+
+img {
+  max-width: 100%;
+}
+
+main .links {
+  display: flex;
+  justify-content: space-between;
+  padding: 3rem;
+}
+
+main .links a {
+  font-family: "TeX Gyre Adventor";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 25px;
+  color: var(--primary);
+}
+
+main .title {
+  display: flex;
+  flex-direction: column;
+}
+
+main .title p {
+  font-family: "TeX Gyre Adventor Bold";
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--secondary);
+}
+
+main .title p > span {
+  font-family: "Georgia";
+  font-style: italic;
+  font-weight: 400;
+}
+
+main .title p:nth-child(2) {
+  align-self: flex-end;
+}
+
+main .about p:first-child {
+  font-family: "TeX Gyre Adventor";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 25px;
+
+  margin-bottom: 0.5rem;
+}
+
+main .about p:last-child {
+  font-family: "Georgia";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.125rem;
+  line-height: 128%;
+
+  margin-top: 1rem;
+}
+
+main .about p:last-child::first-letter {
+  font-size: 64px;
+}
+
+main .about .separator {
+  height: 2px;
+  width: 100%;
+  background-color: var(--primary);
+}
+
 /* Mobile Styles */
+main {
+  display: grid;
+  grid-template-columns: repeat(4, [col-start] 1fr) [col-end];
+  grid-template-rows: [row1-start] auto [row1-end row2-start] 1fr [row2-end row3-start] 100px [row3-end row4-start] auto [row4-end];
+}
+
+main > * {
+  grid-column: col-start / col-end;
+}
+
+main > * + * {
+  margin-bottom: 1rem;
+  padding: 0 1rem;
+}
+
+main .links {
+  grid-row-start: row1-start;
+}
+
+main .image {
+  grid-row-start: row2-start;
+}
+
+main .title {
+  grid-row: span 2 / row3-end;
+  align-self: end;
+}
+
+main .title p {
+  font-size: 4.5rem;
+}
+
+main .about {
+  grid-row: row4-start;
+}
+
+/* Tablet Styles */
+@media screen and (min-width: 790px) {
+  main {
+    grid-template-columns: repeat(8, [col-start] 1fr) [col-end];
+  }
+
+  main > * + * {
+    margin: 0;
+    padding: 0;
+  }
+
+  main .title {
+    grid-column: col-start / col-start 7;
+  }
+
+  main .about {
+    grid-column: span 3 / col-end;
+    grid-row: row2-start;
+    align-self: center;
+  }
+}
+
+/* Laptop Styles */
+@media screen and (min-width: 960px) {
+  main {
+    grid-template-columns: repeat(12, [col-start] 1fr) [col-end];
+  }
+
+  main > * + * {
+    margin: 0;
+    padding: 0;
+  }
+
+  main .title {
+    grid-column: col-start 3 / col-start 12;
+  }
+
+  main .title p {
+    font-size: 6rem;
+    line-height: 100px;
+  }
+
+  main .image {
+    margin: 3rem 0 0 3rem;
+  }
+
+  main .about {
+    grid-column-start: span 5;
+  }
+}
+
+/* Desktop Styles */
+@media screen and (min-width: 1300px) {
+  main {
+    grid-template-rows: [row1-start] auto [row1-end row2-start] 1fr [row2-end row3-start] 100px [row3-end row4-start] 60px [row4-end];
+
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+
+  main .links {
+    grid-column: col-start 7 / span 4;
+    padding: 3rem 0;
+  }
+
+  main .image {
+    grid-row: row1-start / row2-end;
+  }
+
+  main .title {
+    grid-column: col-start 2 / col-start 10;
+    grid-row: span 3 / row4-end;
+  }
+
+  main .title p {
+    font-size: 8rem;
+  }
+
+  main .title p > span {
+    font-size: 4rem;
+  }
+
+  main .about {
+    grid-column-start: span 6;
+  }
+
+  main .about p {
+    max-width: 600px;
+  }
+}
