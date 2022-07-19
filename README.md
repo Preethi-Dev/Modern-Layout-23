@@ -11,3 +11,5 @@ _50 days challenge on Modern Layouts using CSS Grid._
 ✅ Responsive to each breakpoints
 
 ✅ Use 12-Column grid
+
+❌ No Absolute or Relative positioning
